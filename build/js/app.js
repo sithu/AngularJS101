@@ -19,12 +19,10 @@ angular.module('ng101', [
  * @ngdoc ng101.controller.MainCtrl
  * Our main controller
  */
-angular.module('ng101').controller('MainCtrl', [
-    '$interval',
-    '$scope',
-    function ($interval, $scope) {
+angular.module('ng101').controller('MainCtrl', ['MovieSvc',
+    function (MovieSvc) {
 
-        this.foo = '';
+        this.favoriteMovie = MovieSvc.favoriteMovie;
 
         this.movies = [
             { title : 'Bloodsport', year : 1988 },
@@ -35,21 +33,41 @@ angular.module('ng101').controller('MainCtrl', [
     }
 ]);
 /**
+ * @ngdoc ng101.directive.movie-container
+ * Container for movies
+ */
+angular.module('ng101').directive('movieContainer', [
+    function () {
+
+        return {
+            restrict : 'E',
+            scope    : {
+                movies : '='
+            },
+            templateUrl : 'app/views/partials/movie-container.html',
+            link : function (scope, element, attrs) {
+
+            }
+        }
+    }
+]);
+/**
  * @ngdoc ng101.directive.movie
  * Our movie directive
  */
-angular.module('ng101').directive('movie', [
-    function () {
+angular.module('ng101').directive('movie', ['MovieSvc',
+    function (MovieSvc) {
 
         return {
             restrict    : 'E',
             transclude  : true,
             scope       : {
-                title : '@',
-                movieYear  : '@year'
+                title     : '@',
+                movieYear : '@year'
             },
             templateUrl : 'app/views/partials/movie.html',
             link        : function (scope, element, attrs) {
+
             }
         };
     }
@@ -64,5 +82,18 @@ angular.module('ng101').filter('reverse', [
         return function (text, pre, post) {
             return pre + ' ' + text.split('').reverse().join('') + ' ' + post;
         };
+    }
+]);
+/**
+ * @ngdoc ng101.service.MovieSvc
+ * Movie service persists film stuff
+ */
+angular.module('ng101').service('MovieSvc', [
+    function () {
+        var svc = this;
+
+        svc.favoriteMovie = {};
+
+        return svc;
     }
 ]);

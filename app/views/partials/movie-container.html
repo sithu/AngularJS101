@@ -1,0 +1,12 @@
+
+<div ng-click="showMovies = !showMovies">Toggle Movies</div>
+
+￼
+<select ng-options="movie.title for movie in movies | orderBy:'year'"
+        ng-model="mainCtrl.movieSvc.favoriteMovie">
+    <option value=""></option>
+</select>
+
+<movie ng-show="showMovies" ng-repeat="movie in movies" title="{{movie.title}}" year="{{movie.year}}">
+    So what about this?
+</movie>

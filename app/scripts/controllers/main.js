@@ -2,12 +2,10 @@
  * @ngdoc ng101.controller.MainCtrl
  * Our main controller
  */
-angular.module('ng101').controller('MainCtrl', [
-    '$interval',
-    '$scope',
-    function ($interval, $scope) {
+angular.module('ng101').controller('MainCtrl', ['MovieSvc',
+    function (MovieSvc) {
 
-        this.foo = '';
+        this.favoriteMovie = MovieSvc.favoriteMovie;
 
         this.movies = [
             { title : 'Bloodsport', year : 1988 },

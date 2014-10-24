@@ -1,0 +1,31 @@
+movie {
+  display: block;
+  width: 400px;
+  height: 100px;
+  border: 2px solid firebrick;
+  background-color: lemonchiffon;
+  /* starting animations for enter */
+  /* terminal animations for enter */
+  /* starting animations for leave */
+  /* terminal animations for leave */
+}
+movie.favorite {
+  background-color: seagreen;
+}
+movie.ng-enter,
+movie.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+movie.ng-enter {
+  opacity: 0;
+}
+movie.ng-enter.ng-enter-active {
+  opacity: 0;
+}
+movie.ng-leave {
+  opacity: 0;
+}
+movie.ng-leave.ng-leave-active {
+  opacity: 0;
+}
