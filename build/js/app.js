@@ -20,17 +20,35 @@ angular.module('ng101', [
  * Our main controller
  */
 angular.module('ng101').controller('MainCtrl', [
-    '$interval', '$scope',
+    '$interval',
+    '$scope',
     function ($interval, $scope) {
 
-        this.classTitle = 'AngularJS 101';
-        this.classDescription = 'Wifi sux';
+        this.movies = [
+            { title : 'Bloodsport', year : 1988 },
+            { title : 'Cyborg',     year : 1989 },
+            { title : 'Kickboxer',  year : 1989 }
+        ];
 
-        this.nowOnThis;
+    }
+]);
+/**
+ * @ngdoc ng101.directive.movie
+ * Our movie directive
+ */
+angular.module('ng101').directive('movie', [
+    function () {
 
-        $interval(function () {
-            this.nowOnThis = new Date().toString();
-        }.bind(this), 1000);
-
+        return {
+            restrict    : 'E',
+            scope       : {
+                title : '@',
+                movieYear  : '@year'
+            },
+            templateUrl : 'app/views/partials/movie.html',
+            link        : function (scope, element, attrs) {
+                alert(scope.movieYear);
+            }
+        };
     }
 ]);

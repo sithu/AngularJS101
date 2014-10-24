@@ -3,17 +3,15 @@
  * Our main controller
  */
 angular.module('ng101').controller('MainCtrl', [
-    '$interval', '$scope',
+    '$interval',
+    '$scope',
     function ($interval, $scope) {
 
-        this.classTitle = 'AngularJS 101';
-        this.classDescription = 'Wifi sux';
-
-        this.nowOnThis;
-
-        $interval(function () {
-            this.nowOnThis = new Date().toString();
-        }.bind(this), 1000);
+        this.movies = [
+            { title : 'Bloodsport', year : 1988 },
+            { title : 'Cyborg',     year : 1989 },
+            { title : 'Kickboxer',  year : 1989 }
+        ];
 
     }
 ]);
