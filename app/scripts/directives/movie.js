@@ -7,13 +7,13 @@ angular.module('ng101').directive('movie', [
 
         return {
             restrict    : 'E',
+            transclude  : true,
             scope       : {
                 title : '@',
                 movieYear  : '@year'
             },
             templateUrl : 'app/views/partials/movie.html',
             link        : function (scope, element, attrs) {
-                alert(scope.movieYear);
             }
         };
     }

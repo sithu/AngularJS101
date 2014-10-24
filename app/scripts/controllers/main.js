@@ -7,6 +7,8 @@ angular.module('ng101').controller('MainCtrl', [
     '$scope',
     function ($interval, $scope) {
 
+        this.foo = '';
+
         this.movies = [
             { title : 'Bloodsport', year : 1988 },
             { title : 'Cyborg',     year : 1989 },

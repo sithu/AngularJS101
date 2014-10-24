@@ -1,1 +1,8 @@
-<movie ng-repeat="movie in mainCtrl.movies" title="{{movie.title}}" year="{{movie.year}}"></movie>
+<h3>{{mainCtrl.foo | reverse:'preeee':'pooost' | uppercase}}</h3>
+<input ng-model="mainCtrl.foo"/>
+
+<movie ng-repeat="movie in mainCtrl.movies" title="{{movie.title | reverse}}" year="{{movie.year}}">
+
+    So what about this?
+
+</movie>
